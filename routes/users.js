@@ -1,6 +1,7 @@
 let express = require('express');
 let router = express.Router();
 let db = require('../services/db');
+let helper = require('../services/helper')
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -10,34 +11,29 @@ router.get('/', function (req, res, next) {
   });
 });
 
-/* GET user . */
-router.get('/:name', function (req, res, next) {
-  // example of handling async calls with promises
-  db.getUserByName(req.params.name).then(user => {
-    if (user) {
-      res.status(200).json(user);
-    } else {
-      res.status(404).send('User not found!');
-    }
+/* GET users listing. */
+router.get('/emergency', function (req, res, next) {
+  // example of handling async calls with callbacks
+  db.getAllUsers((users, filterEmergency) => {
+
+    // You can abstract the logic in a callback into a separate module to make it testable.
+    var emergencyUsers = users.filter((elem, index, array) => {
+      return elem.status == "EMERGENCY"
+    })
+    // var emergencyUsers = helper.filterEmergency(users)
+
+    res.status(200).json(emergencyUsers)
   });
 });
 
 router.post('/', function (req, res, next) {
-  db.addUser(req.body).then(() => {
-    res.status(201).end();
-  });
-});
-
-router.delete('/:name', function (req, res, next) {
-  db.deleteUserByName(req.params.name).then(() => {
-    res.status(200).end();
-  });
-});
-
-router.delete('/', function (req, res, next) {
-  db.deleteAllUsers().then(() => {
-    res.status(200).end();
-  });
+  if(helper.validateUsername(req.body.username) && helper.validatePassword(req.body.password) && req.body.status != undefined) {
+    db.addUser(req.body).then(() => {
+      res.status(201).end();
+    });
+  } else {
+    res.status(406).end()
+  }
 });
 
 module.exports = router;
