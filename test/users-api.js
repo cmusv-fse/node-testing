@@ -27,7 +27,7 @@ suite('Join Community API', function(){
     .end(function(err, res){
       expect(err).not.to.be.ok()
       expect(res).to.have.property('statusCode')
-      expect(res.statusCode).to.equal(201)
+      expect(res.statusCode).to.equal(201);
       done();
     });
   });
@@ -39,19 +39,22 @@ suite('Join Community API', function(){
         expect(res).to.have.property('statusCode');
         expect(res.statusCode).to.equal(200);
         expect(res.body).to.be.an('array');
-        expect(res.body).not.to.be.empty()
+        expect(res.body[0].username).to.equal('Anton');
+        expect(res.body).not.to.be.empty();
         done();
       });
-  })
+  });
 
   test('Get emergency user', function(done) {
-    agent.get(HOST+'/users')
+    agent.get(HOST+'/users/emergency')
       .end(function(err, res){
         expect(err).to.not.be.ok();
         expect(res).to.have.property('statusCode');
         expect(res.statusCode).to.equal(200);
         expect(res.body).to.be.an('array');
-        expect(res.body).not.to.be.empty()
+        expect(res.body).not.to.be.empty();
+        expect(res.body[0].username).to.equal('Ritvik');
+        expect(res.body[1].username).to.equal('Arthur');
         done();
       });
   })
