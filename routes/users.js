@@ -10,11 +10,11 @@ router.get('/', function (req, res, next) {
   });
 });
 
-/* GET all users with EMERGENCY status */
+/* GET all users with HELP status */
 router.get('/emergency', function (req, res, next) {
   // example of handling async calls with callbacks
   User.all().then((users) => {
-    return User.filter(users, "EMERGENCY")
+    return User.filter(users, 'HELP')
   }).then((filteredUsers) => {
     res.status(200).json(filteredUsers)
   });
@@ -30,15 +30,20 @@ router.post('/', function (req, res, next) {
     let password = req.body.password;
     let status = req.body.status;
     try {
-      let newUser = new User(username, password, status);
-      newUser.save().then(() => {
-        res.status(201).end();
-      });
+      var newUser = new User(username, password, status);
     } catch (err) {
-      rest.statusMessage = err;
+      res.statusMessage = err || err.statusMessage;
       res.status(406).end();
+      console.log(err || err.statusMessage);
     }
+    newUser.save().then(() => {
+        res.status(201).end();
+    }, (exists) => {
+        res.statusMessage = "user " + exists.userName + "exists";
+        res.status(422).end();
+    });
   }
+
 });
 
 module.exports = router;

@@ -3,9 +3,9 @@ class DBLite {
 
     constructor() {
         this.users = [];
-        this.users.push({ "username": "Anton", "password": "abc123", "status": "OK" });
-        this.users.push({ "username": "Shumin", "password": "xyz567", "status": "OK" });
-        this.users.push({ "username": "Ritvik", "password": "def012", "status": "EMERGENCY" });
+        this.users.push({ username: 'Anton', password: 'abc123', status: 'OK' });
+        this.users.push({ username: 'Shumin', password: 'xyz567', status: 'OK' });
+        this.users.push({ username: 'Ritvik', password: 'def012', status: 'HELP' });
     }
 
     getAllUsers(cb) {

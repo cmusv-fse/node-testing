@@ -8,7 +8,7 @@ let DAO = require('../services/dao').DAO;
 
 suite('USER TESTS:', function () {
 
-  test('Username should not be from stop word', function (done) {
+  test('Username should not be a stop word', function (done) {
     var isValid = User.validateUsername('admin');
     expect(isValid).not.to.equal(true);
     done();
@@ -16,7 +16,7 @@ suite('USER TESTS:', function () {
 
   test('Should not create user with invalid username', function (done) {
     try {
-      var newUser = new User("admin", "xyz123", "OK");
+      var newUser = new User('admin', 'xyz123', 'OK');
       expect.fail("erroneously valid username");
     } catch (err) {
       expect(err.message || err).to.equal("invalid username");
@@ -36,14 +36,14 @@ suite('USER TESTS:', function () {
     done();
   });
 
-  test('It should be possible to filter users wrt mergency status', function (done) {
+  test('It should be possible to filter users wrt emergency status', function (done) {
     var users = [
-      { "username": "Anton", "status": "OK" },
-      { "username": "Shumin", "status": "OK" },
-      { "username": "Ritvik", "status": "EMERGENCY" }
+      { username: 'Anton', status: 'OK' },
+      { username: 'Shumin', status: 'OK' },
+      { username: 'Ritvik', status: 'HELP' }
     ];
-    var expected = [{ "username": "Ritvik", "status": "EMERGENCY" }];
-    var actual = User.filter(users, "EMERGENCY");
+    var expected = [{ username: 'Ritvik', status: 'HELP' }];
+    var actual = User.filter(users, 'HELP');
     // the comparison must be eql here for deep equality // 
     expect(actual).to.eql(expected);
     done();
@@ -51,7 +51,7 @@ suite('USER TESTS:', function () {
 
   test('It should be possible to save a new user', function () {
     DAO.db = new DB();
-    let hakan = new User("Hakan", "xyz567", "OK");
+    let hakan = new User('Hakan', 'xyz567', 'OK');
     return hakan.save().then(() => {
       DAO.db.findUserByUsername(hakan.username).then((user) => {
         expect(user.username).to.equal(hakan.username);
@@ -61,7 +61,7 @@ suite('USER TESTS:', function () {
 
   test('It should not be possible to save an existing user', function () {
     DAO.db = new DB();
-    let shumin = new User("Shumin", "xyz567", "OK");
+    let shumin = new User('Shumin', 'xyz567', 'OK');
     return shumin.save().then(() => {
       expect.fail(0, 0, "double saving of user");
     }, (err) => {
@@ -70,15 +70,15 @@ suite('USER TESTS:', function () {
 
   test('It should be possible to retrive an existing user by username', function () {
     DAO.db = new DB();
-    return User.retrieve("Shumin").then((user) => {
-      expect(user.username).to.equal("Shumin");
+    return User.retrieve('Shumin').then((user) => {
+      expect(user.username).to.equal('Shumin');
     });
   });
 
   test('It should not be possible to retrive a non-existing user by username', function () {
     DAO.db = new DB();
-    return User.retrieve("Hakan").then((user) => {
-       expect.fail(0, 0, "non-existing user retrieved");
+    return User.retrieve('Hakan').then((user) => {
+      expect.fail(0, 0, "non-existing user retrieved");
     }, (err) => {
     });
   });

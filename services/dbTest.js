@@ -10,12 +10,12 @@ class DBTest extends DBLite {
 
     static get userTable() {
         return [
-            { "username": "Anton", "password": "abc123", "status": "OK" },
-            { "username": "Shumin", "password": "xyz567", "status": "OK" },
-            { "username": "Ritvik", "password": "def012", "status": "EMERGENCY" },
-            { "username": "Ali", "password": "klm324", "status": "OK" },
-            { "username": "Serra", "password": "gij876", "status": "OK" },
-            { "username": "Dimitris", "password": "hik888", "status": "EMERGENCY" }
+            { username: 'Anton', password: 'abc123', status: 'OK' },
+            { username: 'Shumin', password: 'xyz567', status: 'OK' },
+            { username: 'Ritvik', password: 'def012', status: 'HELP' },
+            { username: 'Ali', password: 'klm324', status: 'OK' },
+            { username: 'Serra', password: 'gij876', status: 'OK' },
+            { username: 'Dimitris', password: 'hik888', status: 'HELP' }
         ];
     }
 
