@@ -1,38 +1,50 @@
 let express = require('express');
 let router = express.Router();
-let db = require('../services/db');
-let helper = require('../services/helper')
+let User = require('../models/user').User;
 
-/* GET users listing. */
+/* GET all users  */
 router.get('/', function (req, res, next) {
   // example of handling async calls with callbacks
-  db.getAllUsers((users) => {
+  User.all().then((users) => {
     res.status(200).json(users)
   });
 });
 
-/* GET users listing. */
+/* GET all users with EMERGENCY status */
 router.get('/emergency', function (req, res, next) {
   // example of handling async calls with callbacks
-  db.getAllUsers((users, filterEmergency) => {
-
-    // You can abstract the logic in a callback into a separate module to make it testable.
-    //var emergencyUsers = users.filter((elem, index, array) => {
-    //  return elem.status == "EMERGENCY"
-    //})
-     var emergencyUsers = helper.filterEmergency(users)
-
-    res.status(200).json(emergencyUsers)
+  User.all().then((users) => {
+    res.status(200).json(User.filter(users, "EMERGENCY"));
   });
 });
 
+/* router.get('/emergency', function (req, res, next) {
+  // example of handling async calls with callbacks
+  User.all().then((users) => {
+    User.filter(users, "EMERGENCY")
+  }).then((filteredUsers) => {
+    res.status(200).json(filteredUsers)
+  });
+}); */
+
+/* POST a new user */
 router.post('/', function (req, res, next) {
-  if(helper.validateUsername(req.body.username) && helper.validatePassword(req.body.password) && req.body.status != undefined) {
-    db.addUser(req.body).then(() => {
-      res.status(201).end();
-    });
+  if (req.body === undefined) {
+    res.statusMessage = "request body undefined";
+    res.status(406).end();
   } else {
-    res.status(406).end()
+    let username = req.body.username;
+    let password = req.body.password;
+    let status = req.body.status;
+    try {
+      let newUser = new User(username, password, status);
+      newUser.save().then(() => {
+        res.status(201).end();
+      });
+    } catch (err) {
+      rest.statusMessage = err;
+      res.status(406).end();
+    }
   }
 });
 
