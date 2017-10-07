@@ -14,18 +14,11 @@ router.get('/', function (req, res, next) {
 router.get('/emergency', function (req, res, next) {
   // example of handling async calls with callbacks
   User.all().then((users) => {
-    res.status(200).json(User.filter(users, "EMERGENCY"));
-  });
-});
-
-/* router.get('/emergency', function (req, res, next) {
-  // example of handling async calls with callbacks
-  User.all().then((users) => {
-    User.filter(users, "EMERGENCY")
+    return User.filter(users, "EMERGENCY")
   }).then((filteredUsers) => {
     res.status(200).json(filteredUsers)
   });
-}); */
+});
 
 /* POST a new user */
 router.post('/', function (req, res, next) {
