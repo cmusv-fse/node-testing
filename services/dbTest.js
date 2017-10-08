@@ -1,3 +1,5 @@
+var Status = require('../models/status').Status;
+
 DBLite = require('./dbLite').DBLite;
 
 class DBTest extends DBLite {
@@ -11,12 +13,12 @@ class DBTest extends DBLite {
 
     static get userTable() {
         return [
-            { username: 'Anton', password: 'abc123', status: 'OK' },
-            { username: 'Shumin', password: 'xyz567', status: 'OK' },
-            { username: 'Ritvik', password: 'def012', status: 'HELP' },
-            { username: 'Ali', password: 'klm324', status: 'OK' },
-            { username: 'Serra', password: 'gij876', status: 'OK' },
-            { username: 'Dimitris', password: 'hik888', status: 'HELP' }
+            { username: 'Anton', password: 'abc123', status: Status.OK },
+            { username: 'Shumin', password: 'xyz567', status: Status.OK },
+            { username: 'Ritvik', password: 'def012', status: Status.HELP },
+            { username: 'Ali', password: 'klm324', status: Status.OK },
+            { username: 'Serra', password: 'gij876', status: Status.OK },
+            { username: 'Dimitris', password: 'hik888', status: Status.HELP }
         ];
     }
 

@@ -22,9 +22,9 @@ suite('DATABASE TESTS:', function () {
         }); */
         // if we return a promise, we don't need done();
         return db.getAllUsers().then((users) => {
-            expect(users).to.deep.include({ username: 'Anton', password: 'abc123', status: 'OK' });
-            expect(users).to.deep.include({ username: 'Shumin', password: 'xyz567', status: 'OK' });
-            expect(users).to.deep.include({ username: 'Ritvik', password: 'def012', status: 'HELP' });
+            expect(users).to.deep.include({ username: 'Anton', password: 'abc123', status: Status.OK });
+            expect(users).to.deep.include({ username: 'Shumin', password: 'xyz567', status: Status.OK });
+            expect(users).to.deep.include({ username: 'Ritvik', password: 'def012', status: Status.HELP });
         });
     });
 
@@ -35,7 +35,7 @@ suite('DATABASE TESTS:', function () {
     });
 
     test('Can add users to DB', function () {
-        let hakan = { username: 'Hakan', password: 'xyz567', status: 'OK' };
+        let hakan = { username: 'Hakan', password: 'xyz567', status: Status.OK };
         return db.addUser(hakan).then(() => {
             db.findUserByUsername(hakan.username).then((user) => {
                 expect(user.username).to.equal(hakan.username);
