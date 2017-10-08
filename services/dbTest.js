@@ -6,6 +6,7 @@ class DBTest extends DBLite {
         super();
         this.init();
         this.connect(pathname, () => { console.log("connected"); });
+        this.delay = 100; // will be asynchronous and slow, like a real DB
     }
 
     static get userTable() {

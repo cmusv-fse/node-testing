@@ -1,3 +1,6 @@
+var Status = require('../models/status').Status;
+
+
 let express = require('express');
 let router = express.Router();
 let User = require('../models/user').User;
@@ -14,7 +17,7 @@ router.get('/', function (req, res, next) {
 router.get('/emergency', function (req, res, next) {
   // example of handling async calls with callbacks
   User.all().then((users) => {
-    return User.filter(users, 'HELP')
+    return User.filter(users, Status.HELP)
   }).then((filteredUsers) => {
     res.status(200).json(filteredUsers)
   });
@@ -34,7 +37,7 @@ router.post('/', function (req, res, next) {
     } catch (err) {
       res.statusMessage = err || err.statusMessage;
       res.status(406).end();
-      console.log(err || err.statusMessage);
+      return;
     }
     newUser.save().then(() => {
         res.status(201).end();

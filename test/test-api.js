@@ -2,6 +2,7 @@ let expect = require('chai').expect;
 let agent = require('superagent');
 var DB = require('../services/dbLite').DBLite;
 var DAO = require('../services/dao').DAO;
+var Status = require('../models/status').Status;
 
 let PORT = 3000;
 let HOST = 'http://localhost:' + PORT;

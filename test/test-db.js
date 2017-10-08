@@ -5,6 +5,7 @@ let expect = require('chai').expect;
 
 let DAO = require('../services/DAO').DAO;
 let DB = require('../services/dbTest').DBTest;
+var Status = require('../models/status').Status;
 
 suite('DATABASE TESTS:', function () {
 
@@ -40,7 +41,6 @@ suite('DATABASE TESTS:', function () {
                 expect(user.username).to.equal(hakan.username);
             })
         });
-        // assertions and done() cannot be here, otherwise test may finish before promise is resolved
     });
 
 });

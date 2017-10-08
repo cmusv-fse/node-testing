@@ -1,29 +1,32 @@
+var Status = require('../models/status').Status;
 
 class DBLite {
 
     constructor() {
         this.users = [];
-        this.users.push({ username: 'Anton', password: 'abc123', status: 'OK' });
-        this.users.push({ username: 'Shumin', password: 'xyz567', status: 'OK' });
-        this.users.push({ username: 'Ritvik', password: 'def012', status: 'HELP' });
+        this.users.push({ username: 'Anton', password: 'abc123', status: Status.OK });
+        this.users.push({ username: 'Shumin', password: 'xyz567', status: Status.OK });
+        this.users.push({ username: 'Ritvik', password: 'def012', status: Status.HELP });
+        this.delay = 0; // will behave like synchronous
     }
 
     getAllUsers(cb) {
         // the following is necessary to hoist the value inside the callbacks
         // otherwise this.users will be undefined inside setTimeout
-        let users = this.users;
+        let users = this.users, delay = this.delay;
         return new Promise((resolve) => {
             setTimeout(function () {
                 if (cb) {
                     cb(users);
                 }
                 resolve(users);
-            }, 20);
+            }, delay);
         });
     }
 
     findUserByUsername(username, cb) {
         let user = this.users.find((u) => u.username === username);
+        let delay = this.delay;
         return new Promise((resolve, reject) => {
             setTimeout(function () {
                 if (cb) {
@@ -34,13 +37,14 @@ class DBLite {
                 } else {
                     resolve(user);
                 }
-            }, 20);
+            }, delay);
         });
     }
 
     addUser(user, cb) {
-        let users = this.users; // this is necessary
+        let users = this.users; // these are necessary for hoisting inside callback
         let exists = users.find((u) => u.username === user.username);
+        let delay = this.delay;
         return new Promise((resolve, reject) => {
             setTimeout(function () {
                 if (exists) {
@@ -52,7 +56,7 @@ class DBLite {
                     }
                     resolve();
                 }
-            }, 20);
+            }, delay);
         });
     }
 

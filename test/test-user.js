@@ -5,6 +5,7 @@ let expect = require('chai').expect;
 let User = require('../models/user').User;
 let DB = require('../services/dbLite').DBLite;
 let DAO = require('../services/dao').DAO;
+var Status = require('../models/status').Status;
 
 suite('USER TESTS:', function () {
 
@@ -18,6 +19,26 @@ suite('USER TESTS:', function () {
     try {
       var newUser = new User('admin', 'xyz123', 'OK');
       expect.fail("erroneously valid username");
+    } catch (err) {
+      expect(err.message || err).to.equal("invalid username");
+      done();
+    }
+  });
+
+  test('Should not create user with invalid password', function (done) {
+    try {
+      var newUser = new User('Wang', '123', 'OK');
+      expect.fail("erroneously valid password");
+    } catch (err) {
+      expect(err.message || err).to.equal("invalid password");
+      done();
+    }
+  });
+
+  test('Should not create user with multiple invalid credentials', function (done) {
+    try {
+      var newUser = new User('account', 'a0', 'OK');
+      expect.fail("erroneously valid password");
     } catch (err) {
       expect(err.message || err).to.equal("invalid username");
       done();
