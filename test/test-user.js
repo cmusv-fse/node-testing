@@ -17,7 +17,7 @@ suite('USER TESTS:', function () {
 
   test('Should not create user with invalid username', function (done) {
     try {
-      var newUser = new User('admin', 'xyz123', 'OK');
+      var newUser = new User('admin', 'xyz123', Status.OK);
       expect.fail("erroneously valid username");
     } catch (err) {
       expect(err.message || err).to.equal("invalid username");
@@ -27,7 +27,7 @@ suite('USER TESTS:', function () {
 
   test('Should not create user with invalid password', function (done) {
     try {
-      var newUser = new User('Wang', '123', 'OK');
+      var newUser = new User('Wang', '123', Status.OK);
       expect.fail("erroneously valid password");
     } catch (err) {
       expect(err.message || err).to.equal("invalid password");
@@ -37,7 +37,7 @@ suite('USER TESTS:', function () {
 
   test('Should not create user with multiple invalid credentials', function (done) {
     try {
-      var newUser = new User('account', 'a0', 'OK');
+      var newUser = new User('account', 'a0', Status.OK);
       expect.fail("erroneously valid password");
     } catch (err) {
       expect(err.message || err).to.equal("invalid username");
@@ -59,12 +59,12 @@ suite('USER TESTS:', function () {
 
   test('It should be possible to filter users wrt emergency status', function (done) {
     var users = [
-      { username: 'Anton', status: 'OK' },
-      { username: 'Shumin', status: 'OK' },
-      { username: 'Ritvik', status: 'HELP' }
+      { username: 'Anton', status: Status.OK },
+      { username: 'Shumin', status: Status.OK },
+      { username: 'Ritvik', status: Status.HELP }
     ];
-    var expected = [{ username: 'Ritvik', status: 'HELP' }];
-    var actual = User.filter(users, 'HELP');
+    var expected = [{ username: 'Ritvik', status: Status.HELP }];
+    var actual = User.filter(users, Status.HELP);
     // the comparison must be eql here for deep equality // 
     expect(actual).to.eql(expected);
     done();
@@ -72,7 +72,7 @@ suite('USER TESTS:', function () {
 
   test('It should be possible to save a new user', function () {
     DAO.db = new DB();
-    let hakan = new User('Hakan', 'xyz567', 'OK');
+    let hakan = new User('Hakan', 'xyz567', Status.OK);
     return hakan.save().then(() => {
       DAO.db.findUserByUsername(hakan.username).then((user) => {
         expect(user.username).to.equal(hakan.username);
@@ -82,7 +82,7 @@ suite('USER TESTS:', function () {
 
   test('It should not be possible to save an existing user', function () {
     DAO.db = new DB();
-    let shumin = new User('Shumin', 'xyz567', 'OK');
+    let shumin = new User('Shumin', 'xyz567', Status.OK);
     return shumin.save().then(() => {
       expect.fail(0, 0, "double saving of user");
     }, (err) => {

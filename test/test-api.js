@@ -18,10 +18,10 @@ setup(function () {
    
 
 // Dummy Users
-var dummy = { username: 'Arthur', password: 'vwy207', status: 'HELP' };
-var goofy = { username: 'Ritvik', password: 'vwy207', status: 'OK' };
-var silly = { username: 'access', password: 'xyz124', status: 'OK' };
-var folly = { username: 'Jane', password: 'aa', status: 'OK' };
+var dummy = { username: 'Arthur', password: 'vwy207', status: Status.HELP };
+var goofy = { username: 'Ritvik', password: 'vwy207', status: Status.OK };
+var silly = { username: 'access', password: 'xyz124', status: Status.OK };
+var folly = { username: 'Jane', password: 'aa', status: Status.OK };
 
 
 suite('API TESTS: ', function () {
@@ -62,8 +62,8 @@ suite('API TESTS: ', function () {
         expect(err).to.be.equal(null);
         expect(res.statusCode).to.be.equal(200);
         let users = res.body;
-        expect(users).to.deep.include({ username: 'Anton', password: 'abc123', status: 'OK' });
-        expect(users).to.deep.include({ username: 'Ritvik', password: 'def012', status: 'HELP' });
+        expect(users).to.deep.include({ username: 'Anton', password: 'abc123', status: Status.OK });
+        expect(users).to.deep.include({ username: 'Ritvik', password: 'def012', status: Status.HELP });
         done();
       });
   });
@@ -75,8 +75,8 @@ suite('API TESTS: ', function () {
         expect(err).to.be.equal(null);
         expect(res.statusCode).to.be.equal(200);
         let users = res.body;
-        expect(users).not.to.deep.include({ username: 'Anton', password: 'abc123', status: 'OK' });
-        expect(users).to.deep.include({ username: 'Ritvik', password: 'def012', status: 'HELP' });
+        expect(users).not.to.deep.include({ username: 'Anton', password: 'abc123', status: Status.OK });
+        expect(users).to.deep.include({ username: 'Ritvik', password: 'def012', status: Status.HELP });
         done();
       });
   });
