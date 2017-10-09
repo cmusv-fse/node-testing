@@ -4,6 +4,9 @@ DBLite = require('./dbLite').DBLite;
 
 class DBTest extends DBLite {
 
+    constructor() {
+        throw "Invalid constructor: a pathname to database should be supllied!"
+    }
     constructor(pathname) {
         super();
         this.init();

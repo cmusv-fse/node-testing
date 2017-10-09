@@ -40,10 +40,10 @@ router.post('/', function (req, res, next) {
       return;
     }
     newUser.save().then(() => {
-        res.status(201).end();
+      res.status(201).end();
     }, (exists) => {
-        res.statusMessage = "user " + exists.userName + "exists";
-        res.status(422).end();
+      res.statusMessage = "user " + exists.userName + "exists";
+      res.status(422).end();
     });
   }
 
