@@ -89,7 +89,7 @@ suite('USER TESTS:', function () {
     });
   });
 
-  test('It should be possible to retrive an existing user by username', function () {
+  test('It should be possible to retrieve an existing user by username', function () {
     DAO.db = new DB();
     return User.retrieve('Shumin').then((user) => {
       expect(user.username).to.equal('Shumin');

@@ -13,9 +13,9 @@ let app = require('../app');
 let server = app.listen(PORT);
 
 setup(function () {
-         DAO.db = new DB();
+  DAO.db = new DB();
 });
-   
+
 
 // Dummy Users
 var dummy = { username: 'Arthur', password: 'vwy207', status: Status.HELP };
