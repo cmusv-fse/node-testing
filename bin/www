@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+
+// run with 'npm start'
+
 var debug = require('debug')('Node-API-Testing');
 var app = require('../app');
 var DB = require('../services/dbTest').DBTest;
