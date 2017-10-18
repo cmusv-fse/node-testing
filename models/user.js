@@ -43,10 +43,6 @@ class User {
         return DAO;
     }
 
-    static get db() {
-        return require('../services/db');
-    }
-
     static filter(users, status) {
         var filteredUsers = users.filter((elem, index, users) => {
             return elem.status == status;
