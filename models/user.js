@@ -51,7 +51,11 @@ class User {
     }
 
     save() {
-        return User.dao.addUser({ username: this.username, password: this.password, status: this.status });
+        return User.dao.addUser({
+            username: this.username,
+            password: this.password,
+            status: this.status
+        });
     }
 
     static retrieve(username) {

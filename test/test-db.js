@@ -22,9 +22,21 @@ suite('DATABASE TESTS:', function () {
         }); */
         // if we return a promise, we don't need done();
         return db.getAllUsers().then((users) => {
-            expect(users).to.deep.include({ username: 'Anton', password: 'abc123', status: Status.OK });
-            expect(users).to.deep.include({ username: 'Shumin', password: 'xyz567', status: Status.OK });
-            expect(users).to.deep.include({ username: 'Ritvik', password: 'def012', status: Status.HELP });
+            expect(users).to.deep.include({
+                username: 'Anton',
+                password: 'abc123',
+                status: Status.OK
+            });
+            expect(users).to.deep.include({
+                username: 'Shumin',
+                password: 'xyz567',
+                status: Status.OK
+            });
+            expect(users).to.deep.include({
+                username: 'Ritvik',
+                password: 'def012',
+                status: Status.HELP
+            });
         });
     });
 

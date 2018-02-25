@@ -4,9 +4,21 @@ class DBLite {
 
     constructor() {
         this.users = [];
-        this.users.push({ username: 'Anton', password: 'abc123', status: Status.OK });
-        this.users.push({ username: 'Shumin', password: 'xyz567', status: Status.OK });
-        this.users.push({ username: 'Ritvik', password: 'def012', status: Status.HELP });
+        this.users.push({
+            username: 'Anton',
+            password: 'abc123',
+            status: Status.OK
+        });
+        this.users.push({
+            username: 'Shumin',
+            password: 'xyz567',
+            status: Status.OK
+        });
+        this.users.push({
+            username: 'Ritvik',
+            password: 'def012',
+            status: Status.HELP
+        });
         this.delay = 0; // will behave like synchronous
     }
 

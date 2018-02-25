@@ -62,8 +62,16 @@ suite('API TESTS: ', function () {
         expect(err).to.be.equal(null);
         expect(res.statusCode).to.be.equal(200);
         let users = res.body;
-        expect(users).to.deep.include({ username: 'Anton', password: 'abc123', status: Status.OK });
-        expect(users).to.deep.include({ username: 'Ritvik', password: 'def012', status: Status.HELP });
+        expect(users).to.deep.include({
+          username: 'Anton',
+          password: 'abc123',
+          status: Status.OK
+        });
+        expect(users).to.deep.include({
+          username: 'Ritvik',
+          password: 'def012',
+          status: Status.HELP
+        });
         done();
       });
   });
