@@ -1,19 +1,20 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         mochaTest: {
-          local: {
-            options: {
-              reporter: 'spec',
-              //captureFile: 'results.txt', // Optionally capture the reporter output to a file
-              quiet: false, // Optionally suppress output to standard out (defaults to false)
-              clearRequireCache: false, // Optionally clear the require cache before running tests (defaults to false)
-              ui: 'tdd'
+            local: {
+                options: {
+                    reporter: 'spec',
+                    //captureFile: 'results.txt', // Optionally capture the reporter output to a file
+                    quiet: false, // Optionally suppress output to standard out (defaults to false)
+                    // below optionally clear the require cache before running tests (defaults to false)
+                    clearRequireCache: false,
+                    ui: 'tdd'
+                },
+                src: ['test/**/*.js']
             },
-            src: ['test/**/*.js']
-          },
         },
         mocha_istanbul: {
             coverage: {
