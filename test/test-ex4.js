@@ -17,5 +17,13 @@ suite('Some Class Examples', function () {
         done();
     });
 
+    test('when done cb is omitted, test passes', function () {
+        //
+    });
+
+    test('when done cb exists but you forget to call it, test fails', function (done) {
+        //
+    });
+
 });
 
