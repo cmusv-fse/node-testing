@@ -11,19 +11,5 @@ suite('Some Class Examples', function () {
         });
     });
 
-    test('check set equality works', function (done) {
-        expect(new Set([1, 2, 3])).to.eql(new Set([2, 1, 3]));
-        expect([1, 2, 3]).to.not.eql([2, 1, 3]);
-        done();
-    });
-
-    test('when done cb is omitted, test passes', function () {
-        //
-    });
-
-    test('when done cb exists but you forget to call it, test fails', function (done) {
-        //
-    });
-
 });
 
