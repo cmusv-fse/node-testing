@@ -1,5 +1,4 @@
 let expect = require('chai').expect;
-later = require('../lectureExamples/ex4').later;
 
 suite('Misc Examples', function () {
 
