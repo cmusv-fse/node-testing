@@ -1,6 +1,6 @@
 let expect = require('chai').expect;
 
-suite('Misc Examples', function () {
+suite('F17 Exam Questions', function () {
 
     test('just show how a client would use getBook', function (done) {
         let $ = {
