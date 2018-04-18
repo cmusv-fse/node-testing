@@ -13,7 +13,7 @@ suite('F17 Exam Questions', function () {
             }
         }
         try {
-            getBook($, 123445898, (title) => {
+            getBook($.ajax, 123445898, (title) => {
                 alertBookFound(title);
                 done();
             });
@@ -24,17 +24,15 @@ suite('F17 Exam Questions', function () {
     });
 
     test('getBook returns title when book is found', function (done) {
-        let fakeJQuery = {
-            ajax: function (opts) {
-                opts.done({
-                    isbn: 123445898,
-                    title: 'Les Miserables',
-                    available: 1
-                });
-            }
-        }
+        let fakeAjax = function (opts) {
+            opts.done({
+                isbn: 123445898,
+                title: 'Les Miserables',
+                available: 1
+            });
+        };
         try {
-            getBook(fakeJQuery, 123445898, (title) => {
+            getBook(fakeAjax, 123445898, (title) => {
                 expect(title).to.equal('Les Miserables');
                 done();
             });
@@ -45,17 +43,15 @@ suite('F17 Exam Questions', function () {
     });
 
     test('getBook throws err when book is not available', function (done) {
-        let fakeJQuery = {
-            ajax: function (opts) {
-                opts.done({
-                    isbn: 123445898,
-                    title: 'Les Miserables',
-                    available: 0
-                });
-            }
-        }
+        let fakeAjax = function (opts) {
+            opts.done({
+                isbn: 123445898,
+                title: 'Les Miserables',
+                available: 0
+            });
+        };
         try {
-            getBook(fakeJQuery, 123445898, (title) => {
+            getBook(fakeAjax, 123445898, (title) => {
                 expect.fail("Book was not available, but was found!");
                 done();
             });
@@ -67,7 +63,7 @@ suite('F17 Exam Questions', function () {
     });
 
     var getBook = function (how, isbn, res) {
-        how.ajax({
+        how({
             type: 'GET',
             url: "http://library.com/books/" + isbn,
             done: function (book) {
