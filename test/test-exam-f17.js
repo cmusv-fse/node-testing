@@ -6,14 +6,14 @@ suite('F17 Exam Questions', function () {
         let $ = {
             ajax: function (opts) {
                 opts.done({
-                    isbn: 123445898,
+                    isbn: '123445898',
                     title: 'Les Miserables',
                     available: 1
                 });
             }
         }
         try {
-            getBook($.ajax, 123445898, (title) => {
+            getBook($.ajax, '123445898', (title) => {
                 alertBookFound(title);
                 done();
             });
@@ -26,18 +26,18 @@ suite('F17 Exam Questions', function () {
     test('getBook returns title when book is found', function (done) {
         let fakeAjax = function (opts) {
             opts.done({
-                isbn: 123445898,
+                isbn: '123445898',
                 title: 'Les Miserables',
                 available: 1
             });
         };
         try {
-            getBook(fakeAjax, 123445898, (title) => {
+            getBook(fakeAjax, '123445898', (title) => {
                 expect(title).to.equal('Les Miserables');
                 done();
             });
         } catch (err) {
-            expect.fail("Book is available, but was not found!")
+            expect.fail("Book is available, but was not found!");
             done();
         }
     });
@@ -45,43 +45,73 @@ suite('F17 Exam Questions', function () {
     test('getBook throws err when book is not available', function (done) {
         let fakeAjax = function (opts) {
             opts.done({
-                isbn: 123445898,
+                isbn: '123445898',
                 title: 'Les Miserables',
                 available: 0
             });
         };
         try {
-            getBook(fakeAjax, 123445898, (title) => {
+            getBook(fakeAjax, '123445898', (title) => {
                 expect.fail("Book was not available, but was found!");
                 done();
             });
         } catch (err) {
-            expect(
-                err).to.equal("No copies are available!");
+            expect(err).to.equal("No copies are available!");
             done();
         }
     });
 
-    var getBook = function (how, isbn, res) {
+    function getBook(how, isbn, res) {
         how({
             type: 'GET',
             url: "http://library.com/books/" + isbn,
             done: function (book) {
                 if (book.available) {
-                    res(book.title)
+                    res(book.title);
                 } else {
-                    throw ("No copies are available!")
+                    throw "No copies are available!";
                 }
             }
         });
     }
 
-    var alertBookFound = function (title) {
+    function alertBookFound(title) {
         console.log("Requested book " + title + " is available.");
     }
 
-    var alertBookNotFound = function (err) {
+    function alertBookNotFound(err) {
         console.log(err);
+    }
+
+    test('getBookWithPromise returns title when book is found', function () {
+        let fakeAjax = function (opts) {
+            opts.done({
+                isbn: '123445898',
+                title: 'Les Miserables',
+                available: 1
+            });
+        };
+        return getBookWithPromise(fakeAjax, '123445898').then(title => {
+            expect(title).to.equal('Les Miserables');
+        }).catch(err => {
+            expect.fail("Book is available, but was not found!");
+        });
+    });
+
+    function getBookWithPromise(how, isbn) {
+        return new Promise(function (resolve, reject) {
+            how({
+                type: 'GET',
+                url: "http://library.com/books/" + isbn,
+                done: function (book) {
+                    if (book.available) {
+                        resolve(book.title);
+                    } else {
+                        reject("No copies are available!");
+                    }
+                }
+            });
+        });
     }
 
 
