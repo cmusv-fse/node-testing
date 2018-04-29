@@ -1,6 +1,6 @@
 let expect = require('chai').expect;
 
-suite('F17 Exam Questions', function () {
+suite('Possible Exam Questions', function () {
 
     test('just show how a client would use getBook', function (done) {
         let $ = {
@@ -45,8 +45,8 @@ suite('F17 Exam Questions', function () {
     test('getBook throws err when book is not available', function (done) {
         let fakeAjax = function (opts) {
             opts.done({
-                isbn: '123445898',
-                title: 'Les Miserables',
+                // isbn: '123445898',
+                // title: 'Les Miserables',
                 available: 0
             });
         };
