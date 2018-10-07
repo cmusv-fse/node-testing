@@ -115,4 +115,17 @@ suite('Misc Examples', function () {
         return newInvestigation.save();
     }
 
+    test("seemingly async, but effectively sync code", function () {
+        let add = function (x, y, callback) {
+            callback(x + y);
+        } // just returning result via callback, structurally async
+
+        let tata;
+        add(4, 5, (result) => {
+            tata = result; // … but effectively sync
+        });
+        expect(tata).to.equal(9);
+
+    });
+
 });

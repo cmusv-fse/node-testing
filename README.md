@@ -7,10 +7,15 @@ Install
 1. Install needed tools using: `npm install -g grunt-cli mocha chai istanbul` (optional)
 2. Install needed dependencies using: `npm install`
 
-Tests results (local)
+Test results (local)
 ==============
 * `grunt test`
 
-Tests coverage (local)
+Test coverage (local)
 ==============
 * `grunt coverage`
+
+Run app (localhost:3000)
+==============
+* navitate to `bin` directory
+* `node www`
