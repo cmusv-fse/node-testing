@@ -38,8 +38,8 @@ suite('Misc Examples', function () {
     test("michael's example, with err, should fail with timeout", function (done) {
         // this.timeout(1000); // may not be needed
         foo("data", 1, function (err, res) {
-            expect(err).to.be.false;
-            expect(res).to.equal("right object");
+           expect(err).to.be.false;
+           // expect(res).to.equal("right object");
             done(); // done will never be called when assertion fails because of use of promise in called code
         });
     });
@@ -87,6 +87,8 @@ suite('Misc Examples', function () {
         }).catch((err) => {
             // console.log(err)
             cb(true, err);
+        }).catch((err) => {  // this is necessary in case an error is thrown in the cb
+            // do nothing 
         });
     }
 
