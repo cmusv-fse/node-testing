@@ -128,4 +128,16 @@ suite('Misc Examples', function () {
 
     });
 
+    test("singleton has single instance", function () {
+        let Singleton = require('../lectureExamples/singleton.js').Singleton;
+
+        s = new Singleton();
+        expect(s.instance).to.equal(undefined);
+        expect(s.curId()).to.equal("id = myid");
+        s.id = "yourid";
+        expect(s.curId()).to.equal("id = yourid");
+        s = new Singleton();
+        expect(s.curId()).to.equal("id = yourid");
+    });
+
 });
