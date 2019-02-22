@@ -17,5 +17,5 @@ Test coverage (local)
 
 Run app (localhost:3000)
 ==============
-* navitate to `bin` directory
+* navigate to `bin` directory
 * `node www`
