@@ -44,7 +44,7 @@ class User {
     }
 
     static filter(users, status) {
-        var filteredUsers = users.filter((elem, index, users) => {
+        var filteredUsers = users.filter((elem) => {
             return elem.status == status;
         });
         return filteredUsers;
