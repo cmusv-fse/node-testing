@@ -1,6 +1,6 @@
 let expect = require('chai').expect;
 
-suite('Possible Exam Questions', function () {
+suite('Some examples of async tests, with and without promises', function () {
 
     test('just show how a client would use getBook', function (done) {
         let $ = {
