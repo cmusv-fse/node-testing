@@ -4,9 +4,18 @@ I suggest to install `yarn ` and install and run `jest` using `yarn` or `jest` C
 
 If you are using `yarn`:    
 
-`yarn test` runs all tests 
+`yarn test` runs all tests    
 
-If you have installed `jest` CLI:   
+Or if you have installed `jest` CLI:   
 
-`jest test-file` runs test matching the pattern `tests-file`
+`jest test-file` runs test matching the pattern `tests-file`    
+
+To run coverage analysis:    
+
+`jest --coverage` runs all tests and produce coverage reports in the `coverage` directory    
+
+To view coverage reports:   
+
+Open `coverage/lcov-report/index.html` in your browser
+
 

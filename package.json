@@ -17,14 +17,5 @@
     "pug": "^2.0.4",
     "serve-favicon": "~2.5.0",
     "superagent": "^5.1.0"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "grunt": "^1.0.3",
-    "grunt-mocha-istanbul": "^5.0.2",
-    "grunt-mocha-test": "^0.13.3",
-    "jest": "^24.9.0",
-    "mocha": "^6.2.1",
-    "mocha-junit-reporter": "^1.23.1"
   }
 }
