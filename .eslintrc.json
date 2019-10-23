@@ -2,6 +2,7 @@
     "parserOptions": {
         "ecmaVersion": 6
     },
+    "extends": "eslint:recommended", 
     "env": {
         "es6": true,
         "mocha": true,
@@ -9,7 +10,7 @@
         "node": true,
         "jquery": true
     },
-    "rules": {
+    "rules_stubbedout": {
         "no-console": "warn",
         "no-dupe-keys": "error",
         "no-duplicate-case": "error",
