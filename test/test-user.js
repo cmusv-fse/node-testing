@@ -9,10 +9,12 @@ var Status = require('../models/status').Status;
 
 suite('USER TESTS:', function () {
 
-  test('Username should not be a stop word', function (done) {
+  test('Username should not be a stop word', function () {
     var isValid = User.validateUsername('admin');
     expect(isValid).not.to.equal(true);
-    done();
+    // done(); 
+    // done is actually not needed is synchronous tests
+    // but we need to be sure they are asyncronous
   });
 
   test('Should not create user with invalid username', function (done) {
