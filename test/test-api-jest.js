@@ -65,11 +65,12 @@ test('Can post a new user - promise version', () => {
       });
     await agent.get(HOST + '/users')
       .send()
-      .then(function (res, err) {
-        expect(err).toBe(undefined);
+      .then((res) => {
         let users = res.body;
         let arthur = users.find((u) => u.username === dummy.username);
         expect(arthur.username).toBe(dummy.username);
+      }).catch(err => {
+        expect(err).toBe(undefined);
       });
   })().catch(e => {
     // deal with chain fail
