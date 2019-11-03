@@ -49,6 +49,34 @@ test('Can post a new user', (done) => {
     });
 });
 
+
+test('Can post a new user - promise version', () => {
+  /* 
+    I can't use await at top level function so I have to wrap the code in
+    an anonymous async function, and then return the promise to let jest know 
+    when test is done. There is no done callback because I'm returning the promise. 
+  */
+  return (async () => {
+    await agent.post(HOST + '/users')
+      .send(dummy)
+      .then((res, err) => {
+        expect(err).toBe(undefined);
+        expect(res.statusCode).toBe(201);
+      });
+    await agent.get(HOST + '/users')
+      .send()
+      .then((res) => {
+        let users = res.body;
+        let arthur = users.find((u) => u.username === dummy.username);
+        expect(arthur.username).toBe(dummy.username);
+      }).catch(err => {
+        expect(err).toBe(undefined);
+      });
+  })().catch(e => {
+    // deal with chain fail
+  })
+});
+
 test('Should not be able to post an exsisting user with rigth response code', (done) => {
   agent.post(HOST + '/users')
     .send(goofy)
