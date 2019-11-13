@@ -77,6 +77,30 @@ test('Can post a new user - promise version', () => {
   })
 });
 
+
+test('Can post a new user - simpler promise version', async () => {
+    // simpler version, not needing an anon function, just add "async" to function param
+    await agent.post(HOST + '/users')
+      .send(dummy)
+      .then((res, err) => {
+        expect(err).toBe(undefined);
+        expect(res.statusCode).toBe(201);
+      }).catch(e => {
+        // deal with it 
+      });
+    return await agent.get(HOST + '/users')
+      .send()
+      .then((res) => {
+        let users = res.body;
+        let arthur = users.find((u) => u.username === dummy.username);
+        expect(arthur.username).toBe(dummy.username);
+      }).catch(err => {
+        expect(err).toBe(undefined);
+      }).catch(e => {
+        // deal with it 
+  })
+});
+
 test('Should not be able to post an exsisting user with rigth response code', (done) => {
   agent.post(HOST + '/users')
     .send(goofy)
