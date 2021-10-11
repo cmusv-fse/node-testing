@@ -34,7 +34,7 @@ test('getBook returns title when book is found', (done) => {
             done();
         });
     } catch (err) {
-        fail("Book is available, but was not found!");
+        throw new Error("Book is available, but was not found!");
         done();
     }
 });
@@ -49,7 +49,7 @@ test('getBook throws err when book is not available', (done) => {
     };
     try {
         getBook(fakeAjax, '123445898', (title) => {
-            fail("Book was not available, but was found!");
+            throw new Error("Book was not available, but was found!");
             done();
         });
     } catch (err) {
@@ -91,7 +91,7 @@ test('getBookWithPromise returns title when book is found', () => {
     return getBookWithPromise(fakeAjax, '123445898').then(title => {
         expect(title).toBe('Les Miserables');
     }).catch(err => {
-        fail("Book is available, but was not found!");
+        throw new Error("Book is available, but was not found!");
     });
 });
 

@@ -12,7 +12,7 @@ test('Username should not be a stop word', () => {
 test('Should not create user with invalid username', () => {
   try {
     var newUser = new User('admin', 'xyz123', Status.OK);
-    fail("erroneously valid username");
+    throw new Error("erroneously valid username");
   } catch (err) {
     expect(err.message || err).toBe("invalid username");
   }
@@ -21,7 +21,7 @@ test('Should not create user with invalid username', () => {
 test('Should not create user with invalid password', () => {
   try {
     var newUser = new User('Wang', '123', Status.OK);
-    fail("erroneously valid password");
+    throw new Error("erroneously valid password");
   } catch (err) {
     expect(err.message || err).toBe("invalid password");
   }
@@ -30,7 +30,7 @@ test('Should not create user with invalid password', () => {
 test('Should not create user with multiple invalid credentials', () => {
   try {
     var newUser = new User('account', 'a0', Status.OK);
-    fail("erroneously valid password");
+    throw new Error("erroneously valid password");
   } catch (err) {
     expect(err.message || err).toBe("invalid username");
   }
@@ -72,7 +72,7 @@ test('It should not be possible to save an existing user', () => {
   DAO.db = new DB();
   let shumin = new User('Shumin', 'xyz567', Status.OK);
   return shumin.save().then(() => {
-    fail(0, 0, "double saving of user");
+    throw new Error("double saving of user");
   }, (err) => {
   });
 });
@@ -87,7 +87,7 @@ test('It should be possible to retrieve an existing user by username', () => {
 test('It should not be possible to retrive a non-existing user by username', () => {
   DAO.db = new DB();
   return User.retrieve('Hakan').then((user) => {
-    fail(0, 0, "non-existing user retrieved");
+    throw new Error("non-existing user retrieved");
   }, (err) => {
   });
 });
