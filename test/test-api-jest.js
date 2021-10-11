@@ -12,8 +12,7 @@ let app = require('../app');
 
 var server;
 
-beforeAll(
-  async () => {
+beforeAll(async () => {
   server = await app.listen(PORT);
 });
 
