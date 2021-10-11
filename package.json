@@ -15,5 +15,8 @@
     "pug": "^2.0.4",
     "serve-favicon": "~2.5.0",
     "superagent": "^5.1.0"
+  },
+  "devDependencies": {
+    "jest": "^27.2.5"
   }
 }

@@ -1,4 +1,4 @@
-jest.setTimeout(500);
+jest.setTimeout(1000);
 
 
 test('check set equality works', function (done) {
@@ -42,7 +42,7 @@ test("promise encapsulating a promise, should fail gracefully", () => {
     return betterfoo("data", 1).then((res) => { // return the promise to inform mocha
         expect(res).toBe("right object");
     }).catch((err) => {
-        fail("o oh, I didn't expect this!");
+        throw new Error("ooops, I didn't expect this!");
     });
 });
 
