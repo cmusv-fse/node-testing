@@ -13,8 +13,6 @@ let app = require('../app');
 var server;
 
 beforeAll(
-  // async (done) => {
-  // server = app.listen(PORT, () => done());
   async () => {
   server = await app.listen(PORT);
 });
