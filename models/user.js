@@ -1,4 +1,4 @@
-var DAO = require('../services/dao').DAO;
+var DAC = require('../services/dac').DAC;
 
 class User {
 
@@ -39,8 +39,8 @@ class User {
         return true;
     }
 
-    static get dao() {
-        return DAO;
+    static get db() {
+        return DAC.db;
     }
 
     static filter(users, status) {
@@ -51,7 +51,7 @@ class User {
     }
 
     save() {
-        return User.dao.addUser({
+        return User.db.addUser({
             username: this.username,
             password: this.password,
             status: this.status
@@ -59,11 +59,11 @@ class User {
     }
 
     static retrieve(username) {
-        return User.dao.findUserByUsername(username);
+        return User.db.findUserByUsername(username);
     }
 
     static all() {
-        return User.dao.getAllUsers();
+        return User.db.getAllUsers();
     }
 
 }

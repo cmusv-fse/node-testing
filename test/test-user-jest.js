@@ -1,7 +1,7 @@
 
 let User = require('../models/user').User;
 let DB = require('../services/dbLite').DBLite;
-let DAO = require('../services/dao').DAO;
+let DAC = require('../services/dac').DAC;
 var Status = require('../models/status').Status;
 
 test('Username should not be a stop word', () => {
@@ -59,17 +59,17 @@ test('It should be possible to filter users wrt emergency status', () => {
 });
 
 test('It should be possible to save a new user', () => {
-  DAO.db = new DB();
+  DAC.db = new DB();
   let hakan = new User('Hakan', 'xyz567', Status.OK);
   return hakan.save().then(() => {
-    DAO.db.findUserByUsername(hakan.username).then((user) => {
+    DAC.db.findUserByUsername(hakan.username).then((user) => {
       expect(user.username).toBe(hakan.username);
     })
   });
 });
 
 test('It should not be possible to save an existing user', () => {
-  DAO.db = new DB();
+  DAC.db = new DB();
   let shumin = new User('Shumin', 'xyz567', Status.OK);
   return shumin.save().then(() => {
     throw new Error("double saving of user");
@@ -78,14 +78,14 @@ test('It should not be possible to save an existing user', () => {
 });
 
 test('It should be possible to retrieve an existing user by username', () => {
-  DAO.db = new DB();
+  DAC.db = new DB();
   return User.retrieve('Shumin').then((user) => {
     expect(user.username).toBe('Shumin');
   });
 });
 
 test('It should not be possible to retrive a non-existing user by username', () => {
-  DAO.db = new DB();
+  DAC.db = new DB();
   return User.retrieve('Hakan').then((user) => {
     throw new Error("non-existing user retrieved");
   }, (err) => {

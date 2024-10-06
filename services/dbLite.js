@@ -1,8 +1,10 @@
 var Status = require('../models/status').Status;
+var IDb = require('./iDb.js').IDb;
 
-class DBLite {
+class DBLite extends IDb {
 
     constructor() {
+        super();
         this.users = [];
         this.users.push({
             username: 'Anton',
