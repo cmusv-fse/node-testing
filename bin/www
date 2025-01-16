@@ -5,7 +5,7 @@
 var debug = require('debug')('Node-API-Testing');
 var app = require('../app');
 var DB = require('../services/dbTest').DBTest;
-var DAO = require('../services/dao').DAO;
+var DAO = require('../services/dac').DAC;
 
 app.set('port', process.env.PORT || 3000);
 
