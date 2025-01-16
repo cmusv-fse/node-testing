@@ -5,11 +5,11 @@
 var debug = require('debug')('Node-API-Testing');
 var app = require('../app');
 var DB = require('../services/dbTest').DBTest;
-var DAO = require('../services/dac').DAC;
+var DAC = require('../services/dac').DAC;
 
 app.set('port', process.env.PORT || 3000);
 
-DAO.db = new DB();
+DAC.db = new DB();
 
 var server = app.listen(app.get('port'), function () {
   let msg = 'Express server listening on port ' + server.address().port;
