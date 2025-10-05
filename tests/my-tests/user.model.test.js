@@ -1,8 +1,8 @@
 
-const User = require('../../server/models/user').User;
+const User = require('../../server/models/user.model').User;
 const DB = require('../../server/dataAccess/dbLite').DBLite;
 const DAC = require('../../server/dataAccess/dac').DAC;
-const Status = require('../../server/models/status').Status;
+const Status = require('../../server/models/status.model').Status;
 
 test('Username should not be a stop word', () => {
   const isValid = User.validateUsername('admin');

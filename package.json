@@ -5,11 +5,11 @@
   "scripts": {
     "start": "node ./server/serve",
     "test:my": "jest tests/my-tests",
-    "test:my:unit": "jest tests/my-tests/user.test.js tests/my-tests/dac.test.js tests/my-tests/db.test.js",
+    "test:my:unit": "jest tests/my-tests/user.model.test.js tests/my-tests/dac.test.js tests/my-tests/db.test.js",
     "test:my:rest": "jest tests/my-tests/api.rest.test.js",
     "test:misc": "jest tests/misc-tests",
     "test:ai": "jest tests/ai-tests/",
-    "test:ai:unit": "jest tests/ai-tests/user.test.js",
+    "test:ai:unit": "jest tests/ai-tests/user.model.test.js",
     "test:ai:rest": "jest tests/ai-tests/user.rest.test.js"
   },
   "dependencies": {

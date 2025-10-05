@@ -1,7 +1,7 @@
 
 const DAC = require('../../server/dataAccess/dac').DAC; // looks like this is not needed here! 
 const DB = require('../../server/dataAccess/dbTest').DBTest;
-const Status = require('../../server/models/status').Status;
+const Status = require('../../server/models/status.model').Status;
 let db;
 
 beforeEach(() => {

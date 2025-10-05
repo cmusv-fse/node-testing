@@ -1,4 +1,4 @@
-const Status = require('../models/status').Status;
+const Status = require('../models/status.model').Status;
 
 const DBLite = require('./dbLite').DBLite;
 

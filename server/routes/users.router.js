@@ -1,9 +1,9 @@
-const Status = require('../models/status').Status;
+const Status = require('../models/status.model').Status;
 
 
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user').User;
+const User = require('../models/user.model').User;
 
 /* GET all users  */
 router.get('/', function (req, res, next) {

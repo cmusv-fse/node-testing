@@ -1,4 +1,4 @@
-const Status = require('../models/status').Status;
+const Status = require('../models/status.model').Status;
 const IDb = require('./iDb.js').IDb;
 
 class DBLite extends IDb {

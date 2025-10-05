@@ -2,7 +2,7 @@
 const agent = require('superagent');
 const DB = require('../../server/dataAccess/dbLite').DBLite;
 const DAC = require('../../server/dataAccess/dac').DAC;
-const Status = require('../../server/models/status').Status;
+const Status = require('../../server/models/status.model').Status;
 
 const PORT = 3000;
 const HOST = 'http://localhost:' + PORT;
