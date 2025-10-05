@@ -39,12 +39,10 @@ test('Can find user in DB', () => {
     });
 });
 
-test('Can add users to DB', () => {
+test('Can add users to DB', async () => {
     const hakan = { username: 'Hakan', password: 'xyz567', status: Status.OK };
-    return db.addUser(hakan).then(() => {
-        db.findUserByUsername(hakan.username).then((user) => {
-            expect(user.username).toEqual(hakan.username);
-        })
-    });
+    await db.addUser(hakan);
+    const user = await db.findUserByUsername(hakan.username);
+    expect(user.username).toEqual(hakan.username);
 });
 
