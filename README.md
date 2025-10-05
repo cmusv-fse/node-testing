@@ -1,6 +1,6 @@
-Testing in Javascript
+Testing in JavaScript
 ==============
-An example on unit testing, Integration testing and asynchronous testing in Javascript.
+An example on unit testing, integration testing and asynchronous testing in JavaScript.
 
 Install Jest
 ==============

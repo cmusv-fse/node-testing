@@ -4,7 +4,7 @@
 
 To run coverage analysis:
 
-`jest --coverage` runs all tests and produce coverage reports in the `coverage` directory
+`jest --coverage` runs all tests and produces coverage reports in the `coverage` directory
 
 To view coverage reports:
 
