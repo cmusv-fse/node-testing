@@ -157,7 +157,7 @@ test("seemingly async, but effectively sync code", () => {
 });
 
 test("singleton has single instance", () => {
-    let Singleton = require('../lectureExamples/singleton.js').Singleton;
+    let Singleton = require('../../lectureExamples/singleton.js').Singleton;
 
     s = new Singleton();
     expect(s.instance).toBeUndefined();

@@ -1,7 +1,7 @@
 
-let DAC = require('../services/dac').DAC; // looks like this is not needed here! 
-let DB = require('../services/dbTest').DBTest;
-var Status = require('../models/status').Status;
+let DAC = require('../../services/dac').DAC; // looks like this is not needed here! 
+let DB = require('../../services/dbTest').DBTest;
+var Status = require('../../models/status').Status;
 var db;
 
 beforeEach(() => {

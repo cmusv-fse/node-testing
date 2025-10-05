@@ -33,6 +33,11 @@ class User {
     }
 
     static validatePassword(password) {
+        // Handle edge cases - throw error for invalid input types
+        if (password === null || password === undefined || typeof password !== 'string') {
+            throw new Error('Password must be a string');
+        }
+        
         if (password.length < this.passwordMinLength) {
             return false;
         }

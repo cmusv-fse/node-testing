@@ -1,8 +1,8 @@
 
-let User = require('../models/user').User;
-let DB = require('../services/dbLite').DBLite;
-let DAC = require('../services/dac').DAC;
-var Status = require('../models/status').Status;
+let User = require('../../models/user').User;
+let DB = require('../../services/dbLite').DBLite;
+let DAC = require('../../services/dac').DAC;
+var Status = require('../../models/status').Status;
 
 test('Username should not be a stop word', () => {
   var isValid = User.validateUsername('admin');

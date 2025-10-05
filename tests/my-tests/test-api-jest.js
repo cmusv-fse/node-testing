@@ -1,14 +1,14 @@
 
 let agent = require('superagent');
-var DB = require('../services/dbLite').DBLite;
-var DAO = require('../services/dac').DAC;
-var Status = require('../models/status').Status;
+var DB = require('../../services/dbLite').DBLite;
+var DAC = require('../../services/dac').DAC;
+var Status = require('../../models/status').Status;
 
 let PORT = 3000;
 let HOST = 'http://localhost:' + PORT;
 
 // Initiate Server
-let app = require('../app');
+let app = require('../../app');
 
 var server;
 
@@ -17,7 +17,7 @@ beforeAll(async () => {
 });
 
 beforeEach(() => {
-  DAO.db = new DB();
+  DAC.db = new DB();
 });
 
 afterAll(async () => {
