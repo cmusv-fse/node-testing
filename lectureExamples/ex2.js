@@ -1,12 +1,12 @@
-var db = {
+const db = {
     query: function (queryString, cb) {
         cb(0, ["john", "jane"]);
     }
 }
 
-var getAllUsers = function () { // async w/ promise
+const getAllUsers = function () { // async w/ promise
     return new Promise((resolve, reject) => {
-        let doUponGetAllUsers = (err, result) => {
+        const doUponGetAllUsers = (err, result) => {
             if (err) {
                 reject(err);
             } else {

@@ -1,5 +1,5 @@
-var Status = require('../models/status').Status;
-var IDb = require('./iDb.js').IDb;
+const Status = require('../models/status').Status;
+const IDb = require('./iDb.js').IDb;
 
 class DBLite extends IDb {
 
@@ -27,7 +27,7 @@ class DBLite extends IDb {
     getAllUsers(cb) {
         // the following is necessary to hoist the value inside the callbacks
         // otherwise this.users will be undefined inside setTimeout
-        let users = this.users, delay = this.delay;
+        const users = this.users, delay = this.delay;
         return new Promise((resolve) => {
             setTimeout(function () {
                 if (cb) {
@@ -39,8 +39,8 @@ class DBLite extends IDb {
     }
 
     findUserByUsername(username, cb) {
-        let user = this.users.find((u) => u.username === username);
-        let delay = this.delay;
+        const user = this.users.find((u) => u.username === username);
+        const delay = this.delay;
         return new Promise((resolve, reject) => {
             setTimeout(function () {
                 if (cb) {
@@ -56,9 +56,9 @@ class DBLite extends IDb {
     }
 
     addUser(user, cb) {
-        let users = this.users; // these are necessary for hoisting inside callback
-        let exists = users.find((u) => u.username === user.username);
-        let delay = this.delay;
+        const users = this.users; // these are necessary for hoisting inside callback
+        const exists = users.find((u) => u.username === user.username);
+        const delay = this.delay;
         return new Promise((resolve, reject) => {
             setTimeout(function () {
                 if (exists) {

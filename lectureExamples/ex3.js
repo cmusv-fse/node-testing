@@ -1,4 +1,4 @@
-var add = function (x, y, callback) {
+const add = function (x, y, callback) {
     callback(x + y);
 }
 //console.log("here");

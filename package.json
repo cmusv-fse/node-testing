@@ -3,7 +3,7 @@
   "version": "F2025-10",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node ./server/serve",
     "test:my": "jest tests/my-tests",
     "test:my:unit": "jest tests/my-tests/test-user.jest.js tests/my-tests/test-dac.jest.js tests/my-tests/test-db.jest.js",
     "test:my:rest": "jest tests/my-tests/test-api.jest.js",

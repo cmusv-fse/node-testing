@@ -1,9 +1,9 @@
-var Status = require('../models/status').Status;
+const Status = require('../models/status').Status;
 
 
-let express = require('express');
-let router = express.Router();
-let User = require('../models/user').User;
+const express = require('express');
+const router = express.Router();
+const User = require('../models/user').User;
 
 /* GET all users  */
 router.get('/', function (req, res, next) {
@@ -29,11 +29,12 @@ router.post('/', function (req, res, next) {
     res.statusMessage = "request body undefined";
     res.status(406).end();
   } else {
-    let username = req.body.username;
-    let password = req.body.password;
-    let status = req.body.status;
+    const username = req.body.username;
+    const password = req.body.password;
+    const status = req.body.status;
+    let newUser;
     try {
-      var newUser = new User(username, password, status);
+      newUser = new User(username, password, status);
     } catch (err) {
       res.statusMessage = err || err.statusMessage;
       res.status(406).end();

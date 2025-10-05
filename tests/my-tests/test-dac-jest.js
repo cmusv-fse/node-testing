@@ -1,5 +1,5 @@
 
-let DAC = require('../../services/dac').DAC;
+const DAC = require('../../server/dataAccess/dac').DAC;
 
 test('Can inject DB into DAC', () => {
   DAC.db = "someDB";

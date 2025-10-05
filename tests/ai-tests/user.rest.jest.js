@@ -1,14 +1,14 @@
 const request = require('superagent');
-const { User } = require('../../models/user');
-const { Status } = require('../../models/status');
-const DB = require('../../services/dbLite').DBLite;
-const DAC = require('../../services/dac').DAC;
+const { User } = require('../../server/models/user');
+const { Status } = require('../../server/models/status');
+const DB = require('../../server/dataAccess/dbLite').DBLite;
+const DAC = require('../../server/dataAccess/dac').DAC;
 
 const PORT = 3000;
 const BASE_URL = `http://localhost:${PORT}`;
 
 // Test server setup
-let app = require('../../app');
+const app = require('../../server/app');
 let server;
 
 describe('Users REST API Integration Tests', () => {

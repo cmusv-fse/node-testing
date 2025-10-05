@@ -1,4 +1,4 @@
-var DAC = require('../services/dac').DAC;
+const DAC = require('../dataAccess/dac').DAC;
 
 class User {
 
@@ -49,7 +49,7 @@ class User {
     }
 
     static filter(users, status) {
-        var filteredUsers = users.filter((elem) => {
+        const filteredUsers = users.filter((elem) => {
             return elem.status == status;
         });
         return filteredUsers;

@@ -1,4 +1,4 @@
-var later = function (result, where) {
+const later = function (result, where) {
     setTimeout(() => {
         where(result);
     }, 20);

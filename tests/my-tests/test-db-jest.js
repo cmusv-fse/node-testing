@@ -1,8 +1,8 @@
 
-let DAC = require('../../services/dac').DAC; // looks like this is not needed here! 
-let DB = require('../../services/dbTest').DBTest;
-var Status = require('../../models/status').Status;
-var db;
+const DAC = require('../../server/dataAccess/dac').DAC; // looks like this is not needed here! 
+const DB = require('../../server/dataAccess/dbTest').DBTest;
+const Status = require('../../server/models/status').Status;
+let db;
 
 beforeEach(() => {
     db = new DB("/home/data/userDB.db");
@@ -40,7 +40,7 @@ test('Can find user in DB', () => {
 });
 
 test('Can add users to DB', () => {
-    let hakan = { username: 'Hakan', password: 'xyz567', status: Status.OK };
+    const hakan = { username: 'Hakan', password: 'xyz567', status: Status.OK };
     return db.addUser(hakan).then(() => {
         db.findUserByUsername(hakan.username).then((user) => {
             expect(user.username).toEqual(hakan.username);

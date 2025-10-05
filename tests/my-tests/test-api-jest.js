@@ -1,16 +1,16 @@
 
-let agent = require('superagent');
-var DB = require('../../services/dbLite').DBLite;
-var DAC = require('../../services/dac').DAC;
-var Status = require('../../models/status').Status;
+const agent = require('superagent');
+const DB = require('../../server/dataAccess/dbLite').DBLite;
+const DAC = require('../../server/dataAccess/dac').DAC;
+const Status = require('../../server/models/status').Status;
 
-let PORT = 3000;
-let HOST = 'http://localhost:' + PORT;
+const PORT = 3000;
+const HOST = 'http://localhost:' + PORT;
 
 // Initiate Server
-let app = require('../../app');
+const app = require('../../server/app');
 
-var server;
+let server;
 
 beforeAll(async () => {
   server = await app.listen(PORT);
@@ -25,10 +25,10 @@ afterAll(async () => {
 });
 
 // Dummy Users
-var dummy = { username: 'Arthur', password: 'vwy207', status: Status.HELP };
-var goofy = { username: 'Ritvik', password: 'vwy207', status: Status.OK };
-var silly = { username: 'access', password: 'xyz124', status: Status.OK };
-var folly = { username: 'Jane', password: 'aa', status: Status.OK };
+const dummy = { username: 'Arthur', password: 'vwy207', status: Status.HELP };
+const goofy = { username: 'Ritvik', password: 'vwy207', status: Status.OK };
+const silly = { username: 'access', password: 'xyz124', status: Status.OK };
+const folly = { username: 'Jane', password: 'aa', status: Status.OK };
 
 test('Can post a new user', (done) => {
   agent.post(HOST + '/users')
@@ -41,8 +41,8 @@ test('Can post a new user', (done) => {
         .send()
         .end(function (err, res) {
           expect(err).toBe(null);
-          let users = res.body;
-          let arthur = users.find((u) => u.username === dummy.username);
+          const users = res.body;
+          const arthur = users.find((u) => u.username === dummy.username);
           expect(arthur.username).toBe(dummy.username);
           done();
         });
@@ -66,8 +66,8 @@ test('Can post a new user - promise version', () => {
     await agent.get(HOST + '/users')
       .send()
       .then((res) => {
-        let users = res.body;
-        let arthur = users.find((u) => u.username === dummy.username);
+        const users = res.body;
+        const arthur = users.find((u) => u.username === dummy.username);
         expect(arthur.username).toBe(dummy.username);
       }).catch(err => {
         expect(err).toBe(undefined);
@@ -91,8 +91,8 @@ test('Can post a new user - simpler promise version', async () => {
   return await agent.get(HOST + '/users')
     .send()
     .then((res) => {
-      let users = res.body;
-      let arthur = users.find((u) => u.username === dummy.username);
+      const users = res.body;
+      const arthur = users.find((u) => u.username === dummy.username);
       expect(arthur.username).toBe(dummy.username);
     }).catch(err => {
       expect(err).toBe(undefined);
@@ -117,7 +117,7 @@ test('Can get all users', (done) => {
     .end(function (err, res) {
       expect(err).toBe(null);
       expect(res.statusCode).toBe(200);
-      let users = res.body;
+      const users = res.body;
       expect(users).toContainEqual({
         username: 'Anton',
         password: 'abc123',
@@ -138,7 +138,7 @@ test('Can get users in emergency', (done) => {
     .end(function (err, res) {
       expect(err).toBe(null);
       expect(res.statusCode).toBe(200);
-      let users = res.body;
+      const users = res.body;
       expect(users).not.toContainEqual({ username: 'Anton', password: 'abc123', status: Status.OK });
       expect(users).toContainEqual({ username: 'Ritvik', password: 'def012', status: Status.HELP });
       done();

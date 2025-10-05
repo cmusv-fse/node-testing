@@ -1,4 +1,4 @@
-let result = "tada!"
+const result = "tada!"
 
 setTimeout(() => {
     console.log(result);

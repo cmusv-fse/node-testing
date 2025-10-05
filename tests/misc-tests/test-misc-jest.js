@@ -47,7 +47,7 @@ test("promise encapsulating a promise, should fail gracefully", () => {
 });
 
 test("async function encapsulating a promise, should pass", async () => {
-    let res = await evenbetterfoo("data", 0);
+    const res = await evenbetterfoo("data", 0);
     expect(res).toBe("right object");
 });
 
@@ -63,9 +63,9 @@ test("callback encapsulating a promise, without done, will always pass", () => {
 
 /* callback encapsulating a promise  */
 function foo(mydata, myerr, cb) {
-    let timeStamp = new Date()//set current date
+    const timeStamp = new Date()//set current date
 
-    let newInvestigation = {
+    const newInvestigation = {
         timestamp: timeStamp,
         data: mydata,
         err: myerr
@@ -96,9 +96,9 @@ function foo(mydata, myerr, cb) {
 
 /* better version: promise encapsulating a promise */
 function betterfoo(mydata, myerr) {
-    let timeStamp = new Date()//set current date
+    const timeStamp = new Date()//set current date
 
-    let newInvestigation = {
+    const newInvestigation = {
         timestamp: timeStamp,
         data: mydata,
         err: myerr
@@ -121,9 +121,9 @@ function betterfoo(mydata, myerr) {
 
 /* even better version: async function encapsulating a promise */
 async function evenbetterfoo(mydata, myerr) {
-    let timeStamp = new Date()//set current date
+    const timeStamp = new Date()//set current date
 
-    let newInvestigation = {
+    const newInvestigation = {
         timestamp: timeStamp,
         data: mydata,
         err: myerr
@@ -145,7 +145,7 @@ async function evenbetterfoo(mydata, myerr) {
 }
 
 test("seemingly async, but effectively sync code", () => {
-    let add = function (x, y, callback) {
+    const add = function (x, y, callback) {
         callback(x + y);
     } // just returning result via callback, structurally async
 
@@ -157,7 +157,7 @@ test("seemingly async, but effectively sync code", () => {
 });
 
 test("singleton has single instance", () => {
-    let Singleton = require('../../lectureExamples/singleton.js').Singleton;
+    const Singleton = require('../../lectureExamples/singleton.js').Singleton;
 
     s = new Singleton();
     expect(s.instance).toBeUndefined();

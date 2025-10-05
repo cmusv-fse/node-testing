@@ -1,6 +1,6 @@
-var Status = require('../models/status').Status;
+const Status = require('../models/status').Status;
 
-DBLite = require('./dbLite').DBLite;
+const DBLite = require('./dbLite').DBLite;
 
 class DBTest extends DBLite {
 
