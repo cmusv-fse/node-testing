@@ -13,18 +13,14 @@
     "test:ai": "npm run jest tests/ai-tests/",
     "test:ai:unit": "npm run jest tests/ai-tests/user.model.test.js",
     "test:ai:rest": "npm run jest tests/ai-tests/user.rest.test.js",
-    "cover:my": "npm run jest tests/my-tests -- --coverage"
+    "test:cover:my": "npm run jest tests/my-tests -- --coverage"
   },
   "dependencies": {
     "body-parser": "^2.2.0",
     "cookie-parser": "^1.4.7",
-    "debug": "^4.4.0",
-    "express": "^4.21.2",
-    "pug": "^3.0.3",
-    "serve-favicon": "^2.5.1"
+    "express": "^4.21.2"
   },
   "devDependencies": {
-    "axios": "^1.12.2",
     "jest": "^30.2.0",
     "superagent": "^10.2.3"
   }
