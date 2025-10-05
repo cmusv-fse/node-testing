@@ -1,7 +1,7 @@
 
-const DAC = require('../../server/dataAccess/dac').DAC; // looks like this is not needed here! 
-const DB = require('../../server/dataAccess/dbTest').DBTest;
-const Status = require('../../server/models/status.model').Status;
+import { DAC } from '../../server/dataAccess/dac.js'; // looks like this is not needed here! 
+import { DBTest as DB } from '../../server/dataAccess/dbTest.js';
+import { Status } from '../../server/models/status.model.js';
 let db;
 
 beforeEach(() => {

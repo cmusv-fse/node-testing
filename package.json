@@ -1,16 +1,19 @@
 {
   "name": "node-api-testing",
   "version": "F2025-10",
+  "type": "module",
   "private": true,
   "scripts": {
     "start": "node ./server/serve",
-    "test:my": "jest tests/my-tests",
-    "test:my:unit": "jest tests/my-tests/user.model.test.js tests/my-tests/dac.test.js tests/my-tests/db.test.js",
-    "test:my:rest": "jest tests/my-tests/api.rest.test.js",
-    "test:misc": "jest tests/misc-tests",
-    "test:ai": "jest tests/ai-tests/",
-    "test:ai:unit": "jest tests/ai-tests/user.model.test.js",
-    "test:ai:rest": "jest tests/ai-tests/user.rest.test.js"
+    "jest": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest",
+    "test:my": "npm run jest tests/my-tests",
+    "test:my:unit": "npm run jest tests/my-tests/user.model.test.js tests/my-tests/dac.test.js tests/my-tests/db.test.js",
+    "test:my:rest": "npm run jest tests/my-tests/api.rest.test.js",
+    "test:misc": "npm run jest tests/misc-tests",
+    "test:ai": "npm run jest tests/ai-tests/",
+    "test:ai:unit": "npm run jest tests/ai-tests/user.model.test.js",
+    "test:ai:rest": "npm run jest tests/ai-tests/user.rest.test.js",
+    "cover:my": "npm run jest tests/my-tests -- --coverage"
   },
   "dependencies": {
     "body-parser": "^2.2.0",

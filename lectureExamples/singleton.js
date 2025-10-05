@@ -20,7 +20,7 @@ class Singleton {
 
 }
 
-exports.Singleton = Singleton;
+export { Singleton };
 
 /*
 You could also simply use a global variable and export it.

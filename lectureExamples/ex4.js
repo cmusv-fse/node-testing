@@ -6,4 +6,4 @@ const later = function (result, where) {
 
 // later("See you later!", console.log);
 
-exports.later = later;
+export { later };

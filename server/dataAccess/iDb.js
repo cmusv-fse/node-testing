@@ -16,4 +16,4 @@ class IDb { // serves as an interface
 
 }
 
-exports.IDb = IDb;
+export { IDb };

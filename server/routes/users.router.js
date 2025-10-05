@@ -1,9 +1,8 @@
-const Status = require('../models/status.model').Status;
+import { Status } from '../models/status.model.js';
+import express from 'express';
+import { User } from '../models/user.model.js';
 
-
-const express = require('express');
 const router = express.Router();
-const User = require('../models/user.model').User;
 
 /* GET all users  */
 router.get('/', function (req, res, next) {
@@ -50,4 +49,4 @@ router.post('/', function (req, res, next) {
 
 });
 
-module.exports = router;
+export default router;

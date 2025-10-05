@@ -1,6 +1,5 @@
-const Status = require('../models/status.model').Status;
-
-const DBLite = require('./dbLite').DBLite;
+import { Status } from '../models/status.model.js';
+import { DBLite } from './dbLite.js';
 
 class DBTest extends DBLite {
 
@@ -32,4 +31,4 @@ class DBTest extends DBLite {
 
 }
 
-exports.DBTest = DBTest;
+export { DBTest };

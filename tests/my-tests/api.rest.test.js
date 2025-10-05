@@ -1,14 +1,12 @@
 
-const agent = require('superagent');
-const DB = require('../../server/dataAccess/dbLite').DBLite;
-const DAC = require('../../server/dataAccess/dac').DAC;
-const Status = require('../../server/models/status.model').Status;
+import agent from 'superagent';
+import { DBLite as DB } from '../../server/dataAccess/dbLite.js';
+import { DAC } from '../../server/dataAccess/dac.js';
+import { Status } from '../../server/models/status.model.js';
+import app from '../../server/app.js';
 
 const PORT = 3000;
 const HOST = 'http://localhost:' + PORT;
-
-// Initiate Server
-const app = require('../../server/app');
 
 let server;
 

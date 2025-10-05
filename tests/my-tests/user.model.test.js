@@ -1,8 +1,8 @@
 
-const User = require('../../server/models/user.model').User;
-const DB = require('../../server/dataAccess/dbLite').DBLite;
-const DAC = require('../../server/dataAccess/dac').DAC;
-const Status = require('../../server/models/status.model').Status;
+import { User } from '../../server/models/user.model.js';
+import { DBLite as DB } from '../../server/dataAccess/dbLite.js';
+import { DAC } from '../../server/dataAccess/dac.js';
+import { Status } from '../../server/models/status.model.js';
 
 test('Username should not be a stop word', () => {
   const isValid = User.validateUsername('admin');

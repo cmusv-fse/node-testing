@@ -1,5 +1,5 @@
-const Status = require('../models/status.model').Status;
-const IDb = require('./iDb.js').IDb;
+import { Status } from '../models/status.model.js';
+import { IDb } from './iDb.js';
 
 class DBLite extends IDb {
 
@@ -76,4 +76,4 @@ class DBLite extends IDb {
 
 }
 
-exports.DBLite = DBLite;
+export { DBLite };

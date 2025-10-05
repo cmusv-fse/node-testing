@@ -10,4 +10,4 @@ class Status {
     }
 }
 
-exports.Status = Status;
+export { Status };

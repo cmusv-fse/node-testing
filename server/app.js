@@ -1,10 +1,15 @@
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 
-const routes = require('./routes/index.router');
-const users = require('./routes/users.router');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+import routes from './routes/index.router.js';
+import users from './routes/users.router.js';
 
 const app = express();
 
@@ -49,5 +54,4 @@ app.use(function (err, req, res, next) {
     });
 });
 
-
-module.exports = app;
+export default app;

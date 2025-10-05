@@ -17,4 +17,4 @@ class DAC {
 
 }
 
-exports.DAC = DAC;
+export { DAC };

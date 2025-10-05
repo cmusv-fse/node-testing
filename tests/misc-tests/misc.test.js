@@ -1,6 +1,3 @@
-jest.setTimeout(1000);
-
-
 test('check set equality works', function (done) {
     expect(new Set([1, 2, 3])).toEqual(new Set([2, 1, 3]));
     expect([1, 2, 3]).not.toEqual([2, 1, 3]);
@@ -11,9 +8,9 @@ test('when done cb is omitted, test passes', function () {
     //
 });
 
-test('when done cb exists but you forget to call it, test fails with timeout', function (done) {
+test('when done cb exists but you forget to call it, test should fail with timeout', function (done) {
     // nothing here
-});
+}, 500); // add timeout to avoid waiting too long   
 
 test("callback encapsulating a promise, should pass", done => {
     foo("data", 0, function (err, res) {
@@ -36,7 +33,7 @@ test("callback encapsulating a promise, should fail with timeout", done => {
         expect(err).toBe(false);
         done(); // done will never be called when assertion fails because of use of promise in called code
     });
-});
+}, 500); // add timeout to avoid waiting too long
 
 test("promise encapsulating a promise, should fail gracefully", () => {
     return betterfoo("data", 1).then((res) => { // return the promise to inform mocha
@@ -44,7 +41,7 @@ test("promise encapsulating a promise, should fail gracefully", () => {
     }).catch((err) => {
         throw new Error("ooops, I didn't expect this!");
     });
-});
+}, 1000); // add timeout to avoid waiting too long
 
 test("async function encapsulating a promise, should pass", async () => {
     const res = await evenbetterfoo("data", 0);
@@ -156,8 +153,8 @@ test("seemingly async, but effectively sync code", () => {
     expect(tata).toBe(9);
 });
 
-test("singleton has single instance", () => {
-    const Singleton = require('../../lectureExamples/singleton.js').Singleton;
+test("singleton has single instance", async () => {
+    const { Singleton } = await import('../../lectureExamples/singleton.js');
 
     s = new Singleton();
     expect(s.instance).toBeUndefined();

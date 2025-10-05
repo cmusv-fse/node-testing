@@ -1,5 +1,5 @@
-const { User } = require('../../server/models/user.model');
-const { Status } = require('../../server/models/status.model');
+import { User } from '../../server/models/user.model.js';
+import { Status } from '../../server/models/status.model.js';
 
 describe('User constructor', () => {
     

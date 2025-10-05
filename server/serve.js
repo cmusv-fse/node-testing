@@ -2,10 +2,12 @@
 
 // run with 'npm start'
 
-const debug = require('debug')('Node-API-Testing');
-const app = require('./app');
-const DB = require('./dataAccess/dbTest').DBTest;
-const DAC = require('./dataAccess/dac').DAC;
+import debug from 'debug';
+import app from './app.js';
+import { DBTest as DB } from './dataAccess/dbTest.js';
+import { DAC } from './dataAccess/dac.js';
+
+const debugApp = debug('Node-API-Testing');
 
 app.set('port', process.env.PORT || 3000);
 
@@ -14,5 +16,5 @@ DAC.db = new DB();
 const server = app.listen(app.get('port'), function () {
   const msg = 'Express server listening on port ' + server.address().port;
   console.log(msg);
-  debug(msg);
+  debugApp(msg);
 });

@@ -1,4 +1,4 @@
-const DAC = require('../dataAccess/dac').DAC;
+import { DAC } from '../dataAccess/dac.js';
 
 class User {
 
@@ -73,4 +73,4 @@ class User {
 
 }
 
-exports.User = User;
+export { User };
