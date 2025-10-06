@@ -8,7 +8,7 @@
     "jest": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest",
     "test:my": "npm run jest tests/my-tests",
     "test:my:unit": "npm run jest tests/my-tests/user.model.test.js tests/my-tests/dac.test.js tests/my-tests/db.test.js",
-    "test:my:rest": "npm run jest tests/my-tests/api.rest.test.js",
+    "test:my:rest": "npm run jest tests/my-tests/user.rest.test.js",
     "test:misc": "npm run jest tests/misc-tests",
     "test:ai": "npm run jest tests/ai-tests/",
     "test:ai:unit": "npm run jest tests/ai-tests/user.model.test.js",
@@ -21,6 +21,7 @@
     "express": "^4.21.2"
   },
   "devDependencies": {
+    "axios": "^1.7.7",
     "jest": "^30.2.0",
     "superagent": "^10.2.3"
   }
