@@ -5,6 +5,10 @@
 1. Integration tests hit the server from the REST API.
 2. Jest should start a server before all tests run, and close the server when tests are finished.
 
+# Which AJAX Libary to Use
+
+Use superagent npm package. 
+
 # Test File Naming Conventions for Integration Tests
 
 1. For each router file myRouter.router.js, the integration tests should be placed in a file /tests/ai-tests/myRouter.rest.test.js
