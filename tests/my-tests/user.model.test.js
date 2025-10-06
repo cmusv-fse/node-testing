@@ -1,4 +1,3 @@
-
 import { User } from '../../server/models/user.model.js';
 import { DBLite as DB } from '../../server/dataAccess/dbLite.js';
 import { DAC } from '../../server/dataAccess/dac.js';
@@ -9,13 +8,21 @@ test('Username should not be a stop word', () => {
   expect(isValid).toBe(false);
 });
 
-test('Should not create user with invalid username', () => {
+test('Should not create user with invalid username - using try/catch', () => {
   try {
     const newUser = new User('admin', 'xyz123', Status.OK);
     throw new Error("erroneously valid username");
   } catch (err) {
     expect(err.message || err).toBe("invalid username");
   }
+});
+
+test('Should not create user with invalid password - using toThrow', () => {
+  // this is an alternative way of testing for exceptions
+  // it is more concise but you can't do any further checks on the error object
+  expect(() => {
+    new User('Wang', '123', Status.OK);
+  }).toThrow('invalid password');
 });
 
 test('Should not create user with invalid password', () => {
@@ -26,6 +33,8 @@ test('Should not create user with invalid password', () => {
     expect(err.message || err).toBe("invalid password");
   }
 });
+
+
 
 test('Should not create user with multiple invalid credentials', () => {
   try {
@@ -89,6 +98,8 @@ test('It should not be possible to retrive a non-existing user by username', () 
   return User.retrieve('Hakan').then((user) => {
     throw new Error("non-existing user retrieved");
   }, (err) => {
+    expect(err).toBeDefined();
+    expect(err.message || err).toContain("not found");
   });
 });
 

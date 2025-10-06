@@ -1,4 +1,5 @@
 import request from 'superagent';
+// Using superagent in a different way than in my-tests/test-api-jest.js
 import { User } from '../../server/models/user.model.js';
 import { Status } from '../../server/models/status.model.js';
 import { DBLite as DB } from '../../server/dataAccess/dbLite.js';
