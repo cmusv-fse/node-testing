@@ -141,7 +141,7 @@ describe('Users REST API Integration Tests', () => {
             test('should return 406 for undefined request body', async () => {
                 try {
                     await request.post(`${BASE_URL}/users`);
-                    fail('Should have thrown an error');
+                    fail('Should have thrown an error'); // hallucination: fail does not exist in Jest
                 } catch (error) {
                     expect(error.response.status).toBe(406);
                 }
@@ -150,7 +150,7 @@ describe('Users REST API Integration Tests', () => {
             test('should return 406 for empty request body', async () => {
                 try {
                     await request.post(`${BASE_URL}/users`).send({});
-                    fail('Should have thrown an error');
+                    fail('Should have thrown an error'); // hallucination: fail does not exist in Jest
                 } catch (error) {
                     expect(error.response.status).toBe(406);
                 }
@@ -165,7 +165,7 @@ describe('Users REST API Integration Tests', () => {
 
                 try {
                     await request.post(`${BASE_URL}/users`).send(invalidUser);
-                    fail('Should have thrown an error');
+                    fail('Should have thrown an error'); // hallucination: fail does not exist in Jest
                 } catch (error) {
                     expect(error.response.status).toBe(406);
                 }
@@ -180,7 +180,7 @@ describe('Users REST API Integration Tests', () => {
 
                 try {
                     await request.post(`${BASE_URL}/users`).send(invalidUser);
-                    fail('Should have thrown an error');
+                    fail('Should have thrown an error'); // hallucination: fail does not exist in Jest
                 } catch (error) {
                     expect(error.response.status).toBe(406);
                 }
@@ -195,7 +195,7 @@ describe('Users REST API Integration Tests', () => {
 
                 try {
                     await request.post(`${BASE_URL}/users`).send(invalidUser);
-                    fail('Should have thrown an error');
+                    fail('Should have thrown an error'); // hallucination: fail does not exist in Jest
                 } catch (error) {
                     expect(error.response.status).toBe(406);
                 }
@@ -210,7 +210,7 @@ describe('Users REST API Integration Tests', () => {
 
                 try {
                     await request.post(`${BASE_URL}/users`).send(invalidUser);
-                    fail('Should have thrown an error');
+                    fail('Should have thrown an error'); // hallucination: fail does not exist in Jest
                 } catch (error) {
                     expect(error.response.status).toBe(406);
                 }
@@ -225,7 +225,7 @@ describe('Users REST API Integration Tests', () => {
 
                 try {
                     await request.post(`${BASE_URL}/users`).send(invalidUser);
-                    fail('Should have thrown an error');
+                    fail('Should have thrown an error'); // hallucination: fail does not exist in Jest
                 } catch (error) {
                     expect(error.response.status).toBe(406);
                 }
@@ -245,7 +245,7 @@ describe('Users REST API Integration Tests', () => {
                 // Try to create same user again - should fail
                 try {
                     await request.post(`${BASE_URL}/users`).send(userData);
-                    fail('Should have thrown an error');
+                    fail('Should have thrown an error'); // hallucination: fail does not exist in Jest
                 } catch (error) {
                     expect(error.response.status).toBe(422);
                 }
@@ -260,7 +260,7 @@ describe('Users REST API Integration Tests', () => {
 
                 try {
                     await request.post(`${BASE_URL}/users`).send(invalidUser);
-                    fail('Should have thrown an error');
+                    fail('Should have thrown an error'); // hallucination: fail does not exist in Jest
                 } catch (error) {
                     expect(error.response.status).toBe(406);
                 }
@@ -338,7 +338,7 @@ describe('Users REST API Integration Tests', () => {
                     .post(`${BASE_URL}/users`)
                     .set('Content-Type', 'application/json')
                     .send('invalid json');
-                fail('Should have thrown an error');
+                fail('Should have thrown an error'); // hallucination: fail does not exist in Jest
             } catch (error) {
                 expect(error.response.status).toBeGreaterThanOrEqual(400);
             }
@@ -351,7 +351,7 @@ describe('Users REST API Integration Tests', () => {
                     password: 'validpass',
                     status: Status.OK
                 });
-                fail('Should have thrown an error');
+                fail('Should have thrown an error'); // hallucination: fail does not exist in Jest
             } catch (error) {
                 expect(error.response.status).toBe(406);
             }

@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 import routes from './routes/index.router.js';
-import users from './routes/users.router.js';
+import users from './routes/user.router.js';
 
 const app = express();
 

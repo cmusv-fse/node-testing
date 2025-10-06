@@ -11,7 +11,7 @@ const HOST = 'http://localhost:' + PORT;
 let server;
 
 beforeAll(async () => {
-  server = await app.listen(PORT);
+  server = app.listen(PORT);
 });
 
 beforeEach(() => {

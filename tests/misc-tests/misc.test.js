@@ -165,4 +165,8 @@ test("singleton has single instance", async () => {
     expect(s.curId()).toBe("id = yourid");
 });
 
+test("the fail assertion is not defined in Jest, so this test will cause a runtime error", async () => {
+    fail('fail does not exist in Jest: in AI-generated jest code, the use of fail is a hallucination');
+});
+
 
