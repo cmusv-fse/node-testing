@@ -13,7 +13,7 @@ This file is used by Copilot to modernize the module structure of the project by
 
 ## Step B: Migrate to ESM
 
-1. Don't use any experimental vm features when running the tests.
+1. Unless it is absolutely necessary, avoid using experimental-vm-modules option when running the tests.
 2. Update the Jest configuration accordingly.
 3. Keep it simple: preserve the ".js" extension.
 4. Migrate the "dac.js" file first. And migrate the Jest file "dac.test.js". Then test the migration by running the "dac.test.js" test file.
